@@ -1,0 +1,48 @@
+
+h2{
+    color: #ff0000;
+}
+.red{
+    color: #f00;
+}
+.blue{
+    color: blue;
+}
+.logImage img{
+    width: 10%;
+}
+.Header{
+    height: 50px;
+    background: #000000;
+    color: #ffffff;
+    line-height: 50px;
+    float: left;
+    width: 100%;
+}
+.item_list li{
+    float: left;
+    overflow: hidden;
+    margin-left: 1%;
+}
+.inner img{
+    width:150px;
+    height: 150px;
+    background-size: 100%;
+}
+.item_cate{
+    width: 100%;
+    float: left;
+}
+.item ul{
+    margin: 0px;
+    padding: 0px;
+}
+.lb{
+    width: 100%;
+    margin-top: 2%;
+    float: left;
+}
+.xq img{
+    width: 150px;
+    height: 150px;
+}
