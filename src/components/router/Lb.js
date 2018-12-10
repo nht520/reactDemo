@@ -5,7 +5,7 @@ class Lb extends Component{
     constructor(props){
         super(props);
         this.state=({
-            title:'',
+            title:'我是列表',
             cate:"",
             price:"",
             img_url:'',
@@ -23,24 +23,26 @@ class Lb extends Component{
         },(err) =>{
             console.log(err)
         })
-    }
+    };
     componentDidMount(){
         this.qinqiu()
     }
     render(){
+        const { title,list } = this.state;
         return(
             <Fragment>
                 <div className="lb">
+                    <h1>{title}</h1>
                     {
-                        this.state.list.map((item,key)=>{
+                        list.map((item,key)=>{
                             return(
                                 <div className="item" key={key}>
                                     <h3 className="item_cate">{item.title}</h3>
                                     <ul className="item_list">
                                         {
-                                            item.list.map((v,k)=>{
+                                            item.list.map((v,key)=>{
                                               return(
-                                                  <li key={k}>
+                                                  <li key={key}>
                                                       <Link to={`/XwXq/${v._id}`}>
                                                           <div className="inner">
                                                               <img alt="" src={`${this.state.domain}${v.img_url}`}/>
@@ -58,7 +60,6 @@ class Lb extends Component{
                         })
                     }
                 </div>
-
             </Fragment>
         )
     }

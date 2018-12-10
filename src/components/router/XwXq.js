@@ -24,7 +24,7 @@ class XwXq extends Component{
         //先在路由界面加上path="/XwXq/:aid"
         //获取动态路由传值
         let _id = this.props.match.params._id;
-        console.log(_id)
+        // console.log(_id)
         this.xq(_id)
     }
     render(){
@@ -35,14 +35,14 @@ class XwXq extends Component{
                    <li>
                        <h2>{this.state.list.title}</h2>
                        <p className="price">{this.state.list.price}/份</p>
-                       {this.state.list.img_url?<img alt="" src={`${this.state.domain}${this.state.list.img_url}`} />:""}
+                       {this.state.list.img_url?<img alt=""src={`${this.state.domain}${this.state.list.img_url}`} />:""}
                        <p>价格{this.state.list.price}</p>
                    </li>
                    <div className="p_detial">
                        <h3>商品详情</h3>
                        {/*解析html*/}
                        <div
-                           className="p_content"
+                           className="this.state.list.p_content"
                            dangerouslySetInnerHTML={{__html: this.state.list.content}}>
                        </div>
                    </div>

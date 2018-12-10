@@ -21,7 +21,8 @@ class FuZi extends Component {
         alert("我是父组件的方法")
     }
     getDate = () =>{
-        alert(this.state.zuzi)
+        this.zuzi=this.state.zuzi
+        alert(this.zuzi)
     }
     //获取子组件传过来的数据
     huoqu = (result) =>{
@@ -42,7 +43,6 @@ class FuZi extends Component {
             </Fragment>
         )
     }
-
 }
 export default FuZi;
 // 父子组件传值：

@@ -1,6 +1,6 @@
 import React,{ Component,Fragment } from 'react';
 import Header from "./Header";
-// import Axios from 'axios';
+import Axios from 'axios';
 //跨域请求
 import fetchJsonp from 'fetch-jsonp';
 //引用路由
@@ -10,6 +10,7 @@ class Chuanzhi extends Component{
         super(props);
         this.state=({
             title:"我是组件1",
+            dateline:"",
             list:[ ]
         })
     }
@@ -18,7 +19,7 @@ class Chuanzhi extends Component{
     }
     chuAnzhi = () =>{
         alert("我是组件1的方法")
-    }
+    };
     zhengeg = () =>{
     //获取伏组件的数据
         // alert(this.props.Fuzi.state.title)
@@ -27,28 +28,27 @@ class Chuanzhi extends Component{
     }
     qingqiu = () =>{
         var api = "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20";
-        // Axios.get(api).then((res)=>{
-        //     console.log(res)
-        //     this.setState({
-        //         list:res.data.result
-        //     })
-        // },(err)=>{
-        //     console.log(err)
-        // })
-        fetchJsonp(api)
-        .then((res)=> {
-                return res.json()
-        }).then((json) =>{
-                console.log(json)
-                this.setState({
-                    list:json.result
-                })
-        }).catch(function(err) {
+        Axios.get(api).then((res)=>{
+            console.log(res)
+            this.setState({
+                list:res.data.result
+            })
+        },(err)=>{
             console.log(err)
         })
-    }
+        // fetchJsonp(api).then((res)=> {
+        //         return res.json()
+        // }).then((json) =>{
+        //         console.log(json)
+        //         this.setState({
+        //             list:json.result
+        //         })
+        // }).catch(function(err) {
+        //     console.log(err)
+        // })
+    };
     render(){
-        const { title } = this.state;
+        const { title,list } = this.state;
         return(
             <Fragment>
                 <Header/>
@@ -64,10 +64,11 @@ class Chuanzhi extends Component{
                 {/*rect获取数据*/}
                 <ul>
                     {
-                        this.state.list.map((item,aid)=>(
-                            <li key={aid}>{item.title}</li>
+                        list.map((item,aid)=>(
+                            <li key={aid}>{item.dateline}</li>
                         ))
                     }
+
                 </ul>
                 <button onClick={this.qingqiu}>请求数据</button>
             </Fragment>

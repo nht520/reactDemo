@@ -20,7 +20,7 @@ class Todo extends Component{
         })
     }
     render(){
-        const {title,username } =this.state;
+        const {title,username} =this.state;
         return(
             <Fragment>
                 <h2>{title}</h2>

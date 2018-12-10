@@ -13,9 +13,9 @@ class Home  extends Component{
             <Fragment>
                 <input
                     value={inputValue}
-                    onChange={this.addOnChangeValue.bind(this)}
+                    onChange={this.addOnChangeValue}
                 />
-                <button onClick={this.addList.bind(this)}>提交</button>
+                <button onClick={this.addList}>提交</button>
                 <ul>
                     {
                         list.map((item,index) => (
@@ -27,13 +27,13 @@ class Home  extends Component{
         )
     }
     //获取vue改变的值
-    addOnChangeValue(e){
+    addOnChangeValue = (e) =>{
         this.setState({
             inputValue:e.target.value
         })
     }
     //增加
-    addList(){
+    addList = () =>{
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue:""
@@ -49,6 +49,5 @@ class Home  extends Component{
             list:adList
         })
     }
-
 }
 export default Home;

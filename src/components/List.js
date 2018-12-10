@@ -50,12 +50,10 @@ class List extends Component{
                 <h1>
                     { this.state.userinfo.name }
                 </h1>
-
                 {/*<button onClick={this.addClick()}>方法后面加括号会自动执行</button>*/}
                 <button onClick={this.addClick.bind(this)}>改变this指向方法1</button>
                 <button onClick={this.delClick}>改变this指向方法2</button>
                 <button onClick={this.moveClick}>改变this指向方法3</button>
-
                 <h5>{gb}</h5>
                 <button onClick={this.gbClick}>改变state里面的值</button>
                 <br/>
