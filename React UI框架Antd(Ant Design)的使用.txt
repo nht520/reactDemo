@@ -1,0 +1,71 @@
+1.antd官网：
+	https://ant.design/docs/react/introduce-cn
+2、React中使用Antd
+	1、安装antd   npm install antd --save    /   yarn add antd     /  cnpm install antd --save
+	2、在您的react项目的css文件中引入 Antd的css
+		@import '~antd/dist/antd.css';
+	3、看文档使用：
+		如使用Button： 
+			1、在对应的组件中引入Antd        import { Button } from 'antd';
+
+			2、<Button type="primary">Primary</Button>
+
+3、React中使用Antd高级配置，按需引入css样式
+
+	我们现在已经把组件成功运行起来了，但是在实际开发过程中还有很多问题，例如上面的例子实际上加载了全部的 antd 组件的样式（对前端性能是个隐患）。
+
+	1、安装antd         npm install antd --save
+
+	2、安装（react-app-rewired）一个对 create-react-app 进行自定义配置的社区解决方案
+
+	   yarn add react-app-rewired    /  cnpm install  react-app-rewired --save
+
+	3、修改 package.json
+	react-scripts 需改为react-app-rewired
+  	"scripts": {
+    		"start": "react-app-rewired start",
+    		"build": "react-app-rewired build",
+    		"test": "react-app-rewired test --env=jsdom",
+    		"eject": "react-app-rewired eject"
+ 	 }
+
+	4、安装babel-plugin-import   babel-plugin-import是一个用于按需加载组件代码和样式的 babel 插件
+		yarn add babel-plugin-import   /  cnpm install babel-plugin-import --save
+
+	5、在项目根目录创建一个 config-overrides.js 配置文件
+	const { injectBabelPlugin } = require('react-app-rewired');
+  	module.exports = function override(config, env) {
+   	 config = injectBabelPlugin(
+     		   ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
+        	   config,
+  	  );
+   	 return config;
+ 	 };
+
+	55、如果是antd-mobile  改成下面的即可
+               const { injectBabelPlugin } = require('react-app-rewired');
+	module.exports = function override(config, env) {
+   	 config = injectBabelPlugin(['import', { libraryName: 'antd-mobile', style: 'css' }], config);
+    	 return config;
+	};
+	
+	7、然后移除前面在 src/App.css 里全量添加的 @import '~antd/dist/antd.css'; 直接引入组件使用就会有对应的css
+		
+		import { Button } from 'antd';
+		<Button type="primary">Primary</Button>
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+	
+
